@@ -44,7 +44,11 @@ FormField _parentField(BuildContext context) {
 
 class Input extends BulmaComponent {
   final InputType _type;
+  var _element;
+
   Input({InputType type}) : _type = type;
+
+  String get value => _element?.value;
 
   @override
   Element createElement(BuildContext context) {
@@ -69,6 +73,9 @@ class Input extends BulmaComponent {
     if (parent != null) {
       typeMod = parent.validatedType;
     }
+    elem.afterInsert((e) {
+      _element = e;
+    });
     return elem;
   }
 }
