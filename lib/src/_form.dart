@@ -21,15 +21,15 @@ class FormField extends BulmaComponent {
     return new Element(
       'div',
       classes: ['field'],
-      children: [
-        new Element('label', classes: ['label'], text: label),
-        new Element('div', classes: ['control'], children: [input]),
+      content: [
+        new Element('label', classes: ['label'], content: label),
+        new Element('div', classes: ['control'], content: [input]),
         help == null
             ? null
             : new Element(
                 'p',
                 classes: ['help', typeModClass(validatedType)],
-                text: help,
+                content: help,
               ),
       ],
     );
@@ -38,7 +38,7 @@ class FormField extends BulmaComponent {
 
 FormField _parentField(BuildContext context) {
   return context.ancestors
-      .take(3)
+      .take(10)
       .firstWhere((p) => p is FormField, orElse: () => null);
 }
 
@@ -73,10 +73,12 @@ class Input extends BulmaComponent {
     if (parent != null) {
       typeMod = parent.validatedType;
     }
-    elem.afterInsert((e) {
-      _element = e;
-    });
+    elem.afterInsert(_setElement);
     return elem;
+  }
+
+  void _setElement(e) {
+    _element = e;
   }
 }
 

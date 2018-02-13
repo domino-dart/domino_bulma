@@ -10,17 +10,17 @@ class Columns extends BulmaComponent {
 
   @override
   Element createElement(BuildContext context) {
-    return new Element('div', classes: ['columns'], children: _columns);
+    return new Element('div', classes: ['columns'], content: _columns);
   }
 }
 
 class Column extends BulmaComponent {
-  final List _children;
-  Column({List children}) : _children = children;
+  final _content;
+  Column({dynamic content}) : _content = content;
 
   @override
   Element createElement(BuildContext context) {
-    return new Element('div', classes: ['column'], children: _children);
+    return new Element('div', classes: ['column'], content: _content);
   }
 }
 

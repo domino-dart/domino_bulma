@@ -6,30 +6,27 @@ import '_modifiers.dart';
 // https://bulma.io/documentation/elements/box/
 
 class Box extends BulmaComponent {
-  final List _children;
+  final _content;
 
-  Box({List children}) : _children = children;
+  Box({content}) : _content = content;
 
   @override
   Element createElement(BuildContext context) {
-    return new Element('div', classes: ['box'], children: _children);
+    return new Element('div', classes: ['box'], content: _content);
   }
 }
 
 class Button extends BulmaComponent {
   final EventHandler _onClick;
-  final String _text;
-  final List _children;
+  final _content;
 
   Button({
     EventHandler onClick,
-    String text,
-    List children,
+    dynamic content,
     TypeMod typeMod,
   })
       : _onClick = onClick,
-        _text = text,
-        _children = children {
+        _content = content {
     this.typeMod = typeMod;
   }
 
@@ -38,20 +35,19 @@ class Button extends BulmaComponent {
     return new Element(
       'button',
       classes: ['button'],
-      text: _text,
-      children: _children,
+      content: _content,
     )..onClick(_onClick);
   }
 }
 
 class Content extends BulmaComponent {
-  final List _children;
+  final _content;
 
-  Content({List children}) : _children = children;
+  Content({content}) : _content = content;
 
   @override
   Element createElement(BuildContext context) {
-    return new Element('content', children: _children);
+    return new Element('content', content: _content);
   }
 }
 

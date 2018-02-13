@@ -1,6 +1,6 @@
 name: domino_bulma
 description: Domino components using the Bulma CSS Framework.
-version: 0.0.2-dev
+version: 0.1.0
 homepage: https://github.com/isoos/domino_bulma
 author: Istvan Soos <istvan.soos@gmail.com>
 
@@ -8,4 +8,9 @@ environment:
   sdk: '>=1.20.1 <2.0.0'
 
 dependencies:
-  domino: ^0.1.1
+  domino: ^0.2.0
+
+dependency_overrides:
+  domino:
+    path:
+      ../domino
