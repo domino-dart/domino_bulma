@@ -6,23 +6,23 @@ class Mods {
   final TypeMod typeMod;
   final SizeMod sizeMod;
   final FloatMod floatMod;
-  final bool isOutlined;
-  final bool isLoading;
-  final bool isDisabled;
-  final bool isMarginless;
-  final bool isPaddingless;
-  final bool isClipped;
+  final bool outlined;
+  final bool loading;
+  final bool disabled;
+  final bool marginless;
+  final bool paddingless;
+  final bool clipped;
 
   Mods({
     this.typeMod,
     this.sizeMod,
     this.floatMod,
-    this.isOutlined,
-    this.isLoading,
-    this.isDisabled,
-    this.isMarginless,
-    this.isPaddingless,
-    this.isClipped,
+    this.outlined,
+    this.loading,
+    this.disabled,
+    this.marginless,
+    this.paddingless,
+    this.clipped,
   });
 
   Element apply(Element element) {
@@ -30,12 +30,12 @@ class Mods {
       ..addClass(typeModClass(typeMod))
       ..addClass(sizeModClass(sizeMod))
       ..addClass(floatModClass(floatMod))
-      ..addClass(outlinedClass(isOutlined))
-      ..addClass(loadingClass(isLoading))
-      ..addClass(marginlessClass(isMarginless))
-      ..addClass(paddinglessClass(isPaddingless))
-      ..addClass(clippedClass(isClipped));
-    applyDisabledAttr(element, isDisabled);
+      ..addClass(outlinedClass(outlined))
+      ..addClass(loadingClass(loading))
+      ..addClass(marginlessClass(marginless))
+      ..addClass(paddinglessClass(paddingless))
+      ..addClass(clippedClass(clipped));
+    applyDisabledAttr(element, disabled);
     return element;
   }
 }

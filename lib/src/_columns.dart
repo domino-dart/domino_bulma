@@ -4,12 +4,12 @@ import '_modifiers.dart';
 
 // https://bulma.io/documentation/columns/basics/
 
-Element columns({Mods mods, content, bool isMultiline, bool isCentered}) =>
+Element columns({Mods mods, content, bool multiLine, bool centered}) =>
     apply(
         new Element('div', content: content)
           ..addClass('columns')
-          ..addClass(multilineClass(isMultiline))
-          ..addClass(centeredClass(isCentered)),
+          ..addClass(multilineClass(multiLine))
+          ..addClass(centeredClass(centered)),
         mods);
 
 Element column({Mods mods, content}) =>
