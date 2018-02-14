@@ -8,7 +8,7 @@ Element columns({Mods mods, content, bool multiLine, bool centered}) =>
     apply(
         new Element('div', content: content)
           ..addClass('columns')
-          ..addClass(multilineClass(multiLine))
+          ..addClass(multiLineClass(multiLine))
           ..addClass(centeredClass(centered)),
         mods);
 
