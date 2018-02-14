@@ -2,6 +2,9 @@ import 'package:domino/domino.dart';
 
 // https://bulma.io/documentation/modifiers/syntax/
 
+// TODO: display classes (show, hide) from https://bulma.io/documentation/modifiers/responsive-helpers/
+// TODO: typography helpers from https://bulma.io/documentation/modifiers/typography-helpers/
+
 class Mods {
   final String _color;
   final String _size;
@@ -9,9 +12,14 @@ class Mods {
   final bool _outlined;
   final bool _loading;
   final bool _disabled;
-  final bool _marginless;
-  final bool _paddingless;
+  final bool _overlay;
   final bool _clipped;
+  final bool _noMargin;
+  final bool _noPadding;
+  final bool _noRadius;
+  final bool _noShadow;
+  final bool _unselectable;
+  final bool _invisible;
 
   Mods({
     String color,
@@ -20,9 +28,14 @@ class Mods {
     bool outlined,
     bool loading,
     bool disabled,
-    bool marginless,
-    bool paddingless,
+    bool overlay,
     bool clipped,
+    bool noMargin,
+    bool noPadding,
+    bool noRadius,
+    bool noShadow,
+    bool unselectable,
+    bool invisible,
   })
       : _color = color,
         _size = size,
@@ -30,20 +43,30 @@ class Mods {
         _outlined = outlined,
         _loading = loading,
         _disabled = disabled,
-        _marginless = marginless,
-        _paddingless = paddingless,
-        _clipped = clipped;
+        _overlay = overlay,
+        _clipped = clipped,
+        _noMargin = noMargin,
+        _noPadding = noPadding,
+        _noRadius = noRadius,
+        _noShadow = noShadow,
+        _unselectable = unselectable,
+        _invisible = invisible;
 
   Element apply(Element element) {
     element
       ..addClass(_color)
       ..addClass(_size)
       ..addClass(_float)
-      ..addClass(outlinedClass(_outlined))
-      ..addClass(loadingClass(_loading))
-      ..addClass(marginlessClass(_marginless))
-      ..addClass(paddinglessClass(_paddingless))
-      ..addClass(clippedClass(_clipped));
+      ..addClass(_class(_outlined, 'is-outlined'))
+      ..addClass(_class(_loading, 'is-loading'))
+      ..addClass(_class(_overlay, 'is-overlay'))
+      ..addClass(_class(_clipped, 'is-clipped'))
+      ..addClass(_class(_noMargin, 'is-marginless'))
+      ..addClass(_class(_noPadding, 'is-paddingless'))
+      ..addClass(_class(_noRadius, 'is-radiusless'))
+      ..addClass(_class(_noShadow, 'is-shadowless'))
+      ..addClass(_class(_unselectable, 'is-unselectable'))
+      ..addClass(_class(_invisible, 'is-invisible'));
     applyDisabledAttr(element, _disabled);
     return element;
   }
@@ -73,15 +96,8 @@ abstract class Float {
 String _class(bool boolValue, String className) =>
     (boolValue == true) ? className : null;
 
-String outlinedClass(bool isOutlined) => _class(isOutlined, 'is-outlined');
-String loadingClass(bool isLoading) => _class(isLoading, 'is-loading');
-String marginlessClass(bool isMarginless) =>
-    _class(isMarginless, 'is-marginless');
-String paddinglessClass(bool isPaddingless) =>
-    _class(isPaddingless, 'is-paddingless');
-String clippedClass(bool isClipped) => _class(isClipped, 'is-clipped');
-String multiLineClass(bool isMultiline) => _class(isMultiline, 'is-multiline');
-String centeredClass(bool isCentered) => _class(isCentered, 'is-centered');
+String multiLineClass(bool multiLine) => _class(multiLine, 'is-multiline');
+String centeredClass(bool centered) => _class(centered, 'is-centered');
 
 Element applyDisabledAttr(Element element, bool isDisabled) {
   if (isDisabled == true) {
