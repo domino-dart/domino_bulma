@@ -7,6 +7,7 @@
 - Removed `BulmaComponent`, clients should use `Mods` instead.
 - Removed most `Component` classes, using simple methods instead in simple cases.
 - Simplified parameters (removed `is` prefix).
+- Renamed `TypeMod` to `MainColor`.
 
 New features:
 

@@ -3,7 +3,7 @@ import 'package:domino/domino.dart';
 // https://bulma.io/documentation/modifiers/syntax/
 
 class Mods {
-  final TypeMod _typeMod;
+  final MainColor _mainColor;
   final SizeMod _sizeMod;
   final FloatMod _floatMod;
   final bool _outlined;
@@ -14,7 +14,7 @@ class Mods {
   final bool _clipped;
 
   Mods({
-    TypeMod typeMod,
+    MainColor mainColor,
     SizeMod sizeMod,
     FloatMod floatMod,
     bool outlined,
@@ -24,7 +24,7 @@ class Mods {
     bool paddingless,
     bool clipped,
   })
-      : _typeMod = typeMod,
+      : _mainColor = mainColor,
         _sizeMod = sizeMod,
         _floatMod = floatMod,
         _outlined = outlined,
@@ -36,7 +36,7 @@ class Mods {
 
   Element apply(Element element) {
     element
-      ..addClass(typeModClass(_typeMod))
+      ..addClass(mainColorClass(_mainColor))
       ..addClass(sizeModClass(_sizeMod))
       ..addClass(floatModClass(_floatMod))
       ..addClass(outlinedClass(_outlined))
@@ -49,24 +49,24 @@ class Mods {
   }
 }
 
-enum TypeMod { primary, link, info, success, warning, danger }
+enum MainColor { primary, link, info, success, warning, danger }
 enum SizeMod { small, medium, large }
 enum FloatMod { clearfix, pulledLeft, pulledRight }
 
-String typeModClass(TypeMod typeMod) {
-  if (typeMod == null) return null;
-  switch (typeMod) {
-    case TypeMod.primary:
+String mainColorClass(MainColor mainColor) {
+  if (mainColor == null) return null;
+  switch (mainColor) {
+    case MainColor.primary:
       return 'is-primary';
-    case TypeMod.link:
+    case MainColor.link:
       return 'is-link';
-    case TypeMod.info:
+    case MainColor.info:
       return 'is-info';
-    case TypeMod.success:
+    case MainColor.success:
       return 'is-success';
-    case TypeMod.warning:
+    case MainColor.warning:
       return 'is-warning';
-    case TypeMod.danger:
+    case MainColor.danger:
       return 'is-danger';
   }
   return null;
