@@ -2,6 +2,44 @@ import 'package:domino/domino.dart';
 
 // https://bulma.io/documentation/modifiers/syntax/
 
+class Mods {
+  final TypeMod typeMod;
+  final SizeMod sizeMod;
+  final FloatMod floatMod;
+  final bool isOutlined;
+  final bool isLoading;
+  final bool isDisabled;
+  final bool isMarginless;
+  final bool isPaddingless;
+  final bool isClipped;
+
+  Mods({
+    this.typeMod,
+    this.sizeMod,
+    this.floatMod,
+    this.isOutlined,
+    this.isLoading,
+    this.isDisabled,
+    this.isMarginless,
+    this.isPaddingless,
+    this.isClipped,
+  });
+
+  Element apply(Element element) {
+    element
+      ..addClass(typeModClass(typeMod))
+      ..addClass(sizeModClass(sizeMod))
+      ..addClass(floatModClass(floatMod))
+      ..addClass(outlinedClass(isOutlined))
+      ..addClass(loadingClass(isLoading))
+      ..addClass(marginlessClass(isMarginless))
+      ..addClass(paddinglessClass(isPaddingless))
+      ..addClass(clippedClass(isClipped));
+    applyDisabledAttr(element, isDisabled);
+    return element;
+  }
+}
+
 enum TypeMod { primary, link, info, success, warning, danger }
 enum SizeMod { small, medium, large }
 enum FloatMod { clearfix, pulledLeft, pulledRight }
@@ -60,12 +98,18 @@ String marginlessClass(bool isMarginless) =>
     _class(isMarginless, 'is-marginless');
 String paddinglessClass(bool isPaddingless) =>
     _class(isPaddingless, 'is-paddingless');
-String clippedClass(bool isClipped) =>
-  _class(isClipped, 'is-clipped');
+String clippedClass(bool isClipped) => _class(isClipped, 'is-clipped');
 
 Element applyDisabledAttr(Element element, bool isDisabled) {
   if (isDisabled == true) {
     element.attr('disabled', null);
+  }
+  return element;
+}
+
+Element apply(Element element, Mods mods) {
+  if (mods != null) {
+    mods.apply(element);
   }
   return element;
 }

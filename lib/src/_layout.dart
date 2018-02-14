@@ -1,18 +1,11 @@
 import 'package:domino/domino.dart';
 
-import '_base.dart';
+import '_modifiers.dart';
 
 // https://bulma.io/documentation/layout/container/
 
-class Container extends BulmaComponent {
-  final _content;
-  Container({dynamic content}) : _content = content;
-
-  @override
-  Element createElement(BuildContext context) {
-    return new Element('div', classes: ['container'], content: _content);
-  }
-}
+Element container({Mods mods, content}) =>
+    apply(new Element('div', classes: ['container'], content: content), mods);
 
 // TODO: add Level
 // TODO: add Media Object

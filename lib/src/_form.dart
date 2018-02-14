@@ -1,58 +1,73 @@
 import 'package:domino/domino.dart';
 
-import '_base.dart';
 import '_modifiers.dart';
 
 // https://bulma.io/documentation/form/general/
 
 enum InputType { text, password, email, tel }
 
-class FormField extends BulmaComponent {
-  final String label;
-  final Component input;
-  final String help;
+class FormField extends Component {
+  final Mods _mods;
+  final String _label;
+  final dynamic _input;
+  final String _help;
 
   TypeMod validatedType;
 
-  FormField({this.label, this.input, this.help});
+  FormField({
+    Mods mods,
+    String label,
+    dynamic input,
+    String help,
+    this.validatedType,
+  })
+      : _mods = mods,
+        _label = label,
+        _input = input,
+        _help = help;
 
   @override
-  Element createElement(BuildContext context) {
-    return new Element(
+  Element build(BuildContext context) {
+    final elem = new Element(
       'div',
       classes: ['field'],
       content: [
-        new Element('label', classes: ['label'], content: label),
-        new Element('div', classes: ['control'], content: [input]),
-        help == null
+        new Element('label', classes: ['label'], content: _label),
+        new Element('div', classes: ['control'], content: _input),
+        _help == null
             ? null
             : new Element(
                 'p',
                 classes: ['help', typeModClass(validatedType)],
-                content: help,
+                content: _help,
               ),
       ],
     );
+    apply(elem, _mods);
+    return elem;
   }
 }
 
 FormField _parentField(BuildContext context) {
   return context.ancestors
-      .take(10)
       .firstWhere((p) => p is FormField, orElse: () => null);
 }
 
-class Input extends BulmaComponent {
+class Input extends Component {
   final InputType _type;
+  final Mods _mods;
   var _element;
 
-  Input({InputType type}) : _type = type;
+  Input({InputType type, Mods mods})
+      : _type = type,
+        _mods = mods;
 
   String get value => _element?.value;
 
   @override
-  Element createElement(BuildContext context) {
+  Element build(BuildContext context) {
     final elem = new Element('input');
+    apply(elem, _mods);
     if (_type != null) {
       switch (_type) {
         case InputType.text:
@@ -71,7 +86,7 @@ class Input extends BulmaComponent {
     }
     final parent = _parentField(context);
     if (parent != null) {
-      typeMod = parent.validatedType;
+      elem.addClass(typeModClass(parent.validatedType));
     }
     elem.afterInsert(_setElement);
     return elem;

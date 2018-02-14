@@ -1,4 +1,3 @@
-export 'src/_base.dart' show BulmaComponent;
 export 'src/_columns.dart';
 export 'src/_components.dart';
 export 'src/_elements.dart';
