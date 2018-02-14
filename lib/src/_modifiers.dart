@@ -3,39 +3,48 @@ import 'package:domino/domino.dart';
 // https://bulma.io/documentation/modifiers/syntax/
 
 class Mods {
-  final TypeMod typeMod;
-  final SizeMod sizeMod;
-  final FloatMod floatMod;
-  final bool outlined;
-  final bool loading;
-  final bool disabled;
-  final bool marginless;
-  final bool paddingless;
-  final bool clipped;
+  final TypeMod _typeMod;
+  final SizeMod _sizeMod;
+  final FloatMod _floatMod;
+  final bool _outlined;
+  final bool _loading;
+  final bool _disabled;
+  final bool _marginless;
+  final bool _paddingless;
+  final bool _clipped;
 
   Mods({
-    this.typeMod,
-    this.sizeMod,
-    this.floatMod,
-    this.outlined,
-    this.loading,
-    this.disabled,
-    this.marginless,
-    this.paddingless,
-    this.clipped,
-  });
+    TypeMod typeMod,
+    SizeMod sizeMod,
+    FloatMod floatMod,
+    bool outlined,
+    bool loading,
+    bool disabled,
+    bool marginless,
+    bool paddingless,
+    bool clipped,
+  })
+      : _typeMod = typeMod,
+        _sizeMod = sizeMod,
+        _floatMod = floatMod,
+        _outlined = outlined,
+        _loading = loading,
+        _disabled = disabled,
+        _marginless = marginless,
+        _paddingless = paddingless,
+        _clipped = clipped;
 
   Element apply(Element element) {
     element
-      ..addClass(typeModClass(typeMod))
-      ..addClass(sizeModClass(sizeMod))
-      ..addClass(floatModClass(floatMod))
-      ..addClass(outlinedClass(outlined))
-      ..addClass(loadingClass(loading))
-      ..addClass(marginlessClass(marginless))
-      ..addClass(paddinglessClass(paddingless))
-      ..addClass(clippedClass(clipped));
-    applyDisabledAttr(element, disabled);
+      ..addClass(typeModClass(_typeMod))
+      ..addClass(sizeModClass(_sizeMod))
+      ..addClass(floatModClass(_floatMod))
+      ..addClass(outlinedClass(_outlined))
+      ..addClass(loadingClass(_loading))
+      ..addClass(marginlessClass(_marginless))
+      ..addClass(paddinglessClass(_paddingless))
+      ..addClass(clippedClass(_clipped));
+    applyDisabledAttr(element, _disabled);
     return element;
   }
 }
