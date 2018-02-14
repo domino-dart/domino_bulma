@@ -79,6 +79,9 @@ abstract class Color {
   static const String success = 'is-success';
   static const String warning = 'is-warning';
   static const String danger = 'is-danger';
+
+  static const String light = 'is-light';
+  static const String dark = 'is-dark';
 }
 
 abstract class Size {
@@ -96,8 +99,10 @@ abstract class Float {
 String _class(bool boolValue, String className) =>
     (boolValue == true) ? className : null;
 
+String noGapClass(bool noGap) => _class(noGap, 'is-gapless');
 String multiLineClass(bool multiLine) => _class(multiLine, 'is-multiline');
 String centeredClass(bool centered) => _class(centered, 'is-centered');
+String fluidClass(bool fluid) => _class(fluid, 'is-fluid');
 
 Element applyDisabledAttr(Element element, bool isDisabled) {
   if (isDisabled == true) {

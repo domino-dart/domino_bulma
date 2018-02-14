@@ -4,10 +4,19 @@ import '_modifiers.dart';
 
 // https://bulma.io/documentation/columns/basics/
 
-Element columns({Mods mods, content, bool multiLine, bool centered}) =>
+// TODO: add variable gap (is-1 .. is-9)
+
+Element columns({
+  Mods mods,
+  List content,
+  bool noGap,
+  bool multiLine,
+  bool centered,
+}) =>
     apply(
         new Element('div', content: content)
           ..addClass('columns')
+          ..addClass(noGapClass(noGap))
           ..addClass(multiLineClass(multiLine))
           ..addClass(centeredClass(centered)),
         mods);
@@ -18,5 +27,3 @@ Element column({Mods mods, content}) =>
 // TODO: add Basics
 // TODO: add Sizes
 // TODO: add Responsiveness
-// TODO: add Nesting
-// TODO: add Gap

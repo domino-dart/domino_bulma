@@ -4,14 +4,17 @@
 
 **Breaking Changes:**
 
-- Removed `BulmaComponent`, clients should use `Mods` instead.
-- Removed most `Component` classes, using simple methods instead in simple cases.
+- Removed `BulmaComponent`, clients should use `Mods` to add arbitrary `bulma` classes.
+- Removed most `Component` classes, using methods instead in simple cases.
 - Simplified parameters (removed `is` prefix).
 - Removed `*Mod` enums, using String class values instead.
 
-New features:
+*New features:*
 
-- Implemented column options.
+- Implemented `column` options.
+- Implemented layouts: `level`, `media`, `hero`, `section`, and `footer`.
+- Implemented elements: `notification`, and `progress`.
+- Implemented components: `breadcrumb`, partial `card`, `message`.
 
 ## 0.1.0
 
