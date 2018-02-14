@@ -99,6 +99,8 @@ String marginlessClass(bool isMarginless) =>
 String paddinglessClass(bool isPaddingless) =>
     _class(isPaddingless, 'is-paddingless');
 String clippedClass(bool isClipped) => _class(isClipped, 'is-clipped');
+String multilineClass(bool isMultiline) => _class(isMultiline, 'is-multiline');
+String centeredClass(bool isCentered) => _class(isCentered, 'is-centered');
 
 Element applyDisabledAttr(Element element, bool isDisabled) {
   if (isDisabled == true) {
