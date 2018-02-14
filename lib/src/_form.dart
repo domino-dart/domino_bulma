@@ -12,14 +12,14 @@ class FormField extends Component {
   final dynamic _input;
   final String _help;
 
-  MainColor mainColor;
+  String color;
 
   FormField({
     Mods mods,
     String label,
     dynamic input,
     String help,
-    this.mainColor,
+    this.color,
   })
       : _mods = mods,
         _label = label,
@@ -38,7 +38,7 @@ class FormField extends Component {
             ? null
             : new Element(
                 'p',
-                classes: ['help', mainColorClass(mainColor)],
+                classes: ['help', color],
                 content: _help,
               ),
       ],
@@ -86,7 +86,7 @@ class Input extends Component {
     }
     final parent = _parentField(context);
     if (parent != null) {
-      elem.addClass(mainColorClass(parent.mainColor));
+      elem.addClass(parent.color);
     }
     elem.afterInsert(_setElement);
     return elem;
