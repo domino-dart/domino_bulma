@@ -1,53 +1,35 @@
 import 'package:domino/domino.dart';
-
-import '_modifiers.dart';
+import 'package:domino/helpers.dart';
 
 // https://bulma.io/documentation/elements/box/
 
-Element box({Mods mods, content}) =>
-    apply(new Element('div', classes: ['box'], content: content), mods);
+Element box(content) => div([clazz('box'), content]);
 
-Element button({
-  Mods mods,
-  EventHandler onClick,
-  dynamic content,
-}) =>
-    apply(new Element('button', classes: ['button'], content: content), mods)
-      ..onClick(onClick);
+Element button(content, {EventHandler onClick}) =>
+    new Element('button', [clazz('button'), on('click', onClick), content]);
 
-Element content({Mods mods, content}) =>
-    apply(new Element('content', content: content), mods);
+Element content(content) => new Element('content', content);
 
-Element delete({Mods mods, EventHandler onClick}) =>
-    apply(new Element('button', classes: ['delete'])..onClick(onClick), mods);
+Element delete({mods, EventHandler onClick}) =>
+    new Element('button', [clazz('delete'), on('click', onClick), mods]);
 
-Element notification({Mods mods, content, EventHandler onDelete}) {
-  return apply(
-      new Element(
-        'div',
-        classes: ['notification'],
-        content: [
-          delete(onClick: onDelete),
-          content,
-        ],
-      ),
-      mods);
-}
+Element notification(content, {EventHandler onDelete}) => div([
+      clazz('notification'),
+      delete(onClick: onDelete),
+      content,
+    ]);
 
-Element progress({Mods mods, int value, int max, content}) {
-  final elem = apply(
-      new Element(
-        'progress',
-        classes: ['progress'],
-        attrs: {'value': '$value', 'max': '$max'},
-      ),
-      mods);
+Element progress({mods, int value, int max, content}) {
   if (content != null) {
-    elem.content = content;
-  } else {
-    elem.content = '${(value * 100 / max).round()}%';
+    content = '${(value * 100 / max).round()}%';
   }
-  return elem;
+  return new Element('progress', [
+    clazz('progress'),
+    attr('value', '$value'),
+    attr('max', '$max'),
+    mods,
+    content,
+  ]);
 }
 
 // TODO: add icon

@@ -5,115 +5,40 @@ import 'package:domino/domino.dart';
 // TODO: display classes (show, hide) from https://bulma.io/documentation/modifiers/responsive-helpers/
 // TODO: typography helpers from https://bulma.io/documentation/modifiers/typography-helpers/
 
-class Mods {
-  final String _color;
-  final String _size;
-  final String _float;
-  final bool _outlined;
-  final bool _loading;
-  final bool _disabled;
-  final bool _overlay;
-  final bool _clipped;
-  final bool _noMargin;
-  final bool _noPadding;
-  final bool _noRadius;
-  final bool _noShadow;
-  final bool _unselectable;
-  final bool _invisible;
+class Modifier {
+  static final Setter primary = clazz('is-primary');
+  static final Setter link = clazz('is-link');
+  static final Setter info = clazz('is-info');
+  static final Setter success = clazz('is-success');
+  static final Setter warning = clazz('is-warning');
+  static final Setter danger = clazz('is-danger');
 
-  Mods({
-    String color,
-    String size,
-    String float,
-    bool outlined,
-    bool loading,
-    bool disabled,
-    bool overlay,
-    bool clipped,
-    bool noMargin,
-    bool noPadding,
-    bool noRadius,
-    bool noShadow,
-    bool unselectable,
-    bool invisible,
-  })
-      : _color = color,
-        _size = size,
-        _float = float,
-        _outlined = outlined,
-        _loading = loading,
-        _disabled = disabled,
-        _overlay = overlay,
-        _clipped = clipped,
-        _noMargin = noMargin,
-        _noPadding = noPadding,
-        _noRadius = noRadius,
-        _noShadow = noShadow,
-        _unselectable = unselectable,
-        _invisible = invisible;
+  static final Setter light = clazz('is-light');
+  static final Setter dark = clazz('is-dark');
 
-  Element apply(Element element) {
-    element
-      ..addClass(_color)
-      ..addClass(_size)
-      ..addClass(_float)
-      ..addClass(_class(_outlined, 'is-outlined'))
-      ..addClass(_class(_loading, 'is-loading'))
-      ..addClass(_class(_overlay, 'is-overlay'))
-      ..addClass(_class(_clipped, 'is-clipped'))
-      ..addClass(_class(_noMargin, 'is-marginless'))
-      ..addClass(_class(_noPadding, 'is-paddingless'))
-      ..addClass(_class(_noRadius, 'is-radiusless'))
-      ..addClass(_class(_noShadow, 'is-shadowless'))
-      ..addClass(_class(_unselectable, 'is-unselectable'))
-      ..addClass(_class(_invisible, 'is-invisible'));
-    applyDisabledAttr(element, _disabled);
-    return element;
-  }
-}
+  static final Setter small = clazz('is-small');
+  static final Setter medium = clazz('is-medium');
+  static final Setter large = clazz('is-large');
 
-abstract class Color {
-  static const String primary = 'is-primary';
-  static const String link = 'is-link';
-  static const String info = 'is-info';
-  static const String success = 'is-success';
-  static const String warning = 'is-warning';
-  static const String danger = 'is-danger';
+  static final Setter clearfix = clazz('is-clearfix');
+  static final Setter pulledLeft = clazz('is-pulled-left');
+  static final Setter pulledRight = clazz('is-pulled-right');
 
-  static const String light = 'is-light';
-  static const String dark = 'is-dark';
-}
+  static final Setter outlined = clazz('is-outlined');
+  static final Setter loading = clazz('is-loading');
+  static final Setter overlay = clazz('is-overlay');
+  static final Setter clipped = clazz('is-clipped');
+  static final Setter noMargin = clazz('is-marginless');
+  static final Setter noPadding = clazz('is-paddingless');
+  static final Setter noRadius = clazz('is-radiusless');
+  static final Setter noShadow = clazz('is-shadowless');
 
-abstract class Size {
-  static const String small = 'is-small';
-  static const String medium = 'is-medium';
-  static const String large = 'is-large';
-}
+  static final Setter unselectable = clazz('is-unselectable');
+  static final Setter invisble = clazz('is-invisible');
+  static final Setter disabled = attr('disabled', 'disabled');
 
-abstract class Float {
-  static const String clearfix = 'is-clearfix';
-  static const String pulledLeft = 'is-pulled-left';
-  static const String pulledRight = 'is-pulled-right';
-}
-
-String _class(bool boolValue, String className) =>
-    (boolValue == true) ? className : null;
-
-String noGapClass(bool noGap) => _class(noGap, 'is-gapless');
-String multiLineClass(bool multiLine) => _class(multiLine, 'is-multiline');
-String centeredClass(bool centered) => _class(centered, 'is-centered');
-String fluidClass(bool fluid) => _class(fluid, 'is-fluid');
-
-Element applyDisabledAttr(Element element, bool isDisabled) {
-  if (isDisabled == true) {
-    element.attr('disabled', null);
-  }
-  return element;
-}
-
-Element apply(Element element, Mods mods) {
-  if (mods != null) {
-    mods.apply(element);
-  }
-  return element;
+  static final Setter centered = clazz('is-centered');
+  static final Setter multiLine = clazz('is-multiline');
+  static final Setter noGap = clazz('is-gapless');
+  static final Setter fluid = clazz('is-fluid');
 }

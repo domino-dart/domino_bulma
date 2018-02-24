@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0
+
+**Breaking Changes**:
+
+- Updated to `domino` 0.3.0.
+- Removed `Mods`, using `Modifier` instead which exposes `Setter`s.
+
 ## 0.2.0
 
 **Breaking Changes:**

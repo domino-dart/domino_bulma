@@ -1,4 +1,5 @@
 import 'package:domino/domino.dart';
+import 'package:domino/helpers.dart';
 
 import '_modifiers.dart';
 
@@ -6,69 +7,57 @@ import '_modifiers.dart';
 
 // TODO: is-widescreen
 // TODO: is-fullhd
-Element container({Mods mods, content, bool fluid}) => apply(
-    new Element('div', classes: ['container'], content: content)
-      ..addClass('container')
-      ..addClass(fluidClass(fluid)),
-    mods);
+Element container(content, {bool fluid}) => div([
+      clazz('container'),
+      fluid == true ? Modifier.fluid : null,
+      content,
+    ]);
 
 Iterable _iterate(items) => items is List ? items : [items];
-_levelItems(items) => _iterate(items)
-    .map((item) => new Element('div', classes: ['level-item'], content: item))
-    .toList();
+_levelItems(items) =>
+    _iterate(items).map((item) => div([clazz('level-item'), item])).toList();
 
-Element level({Mods mods, left, content, right}) {
-  final root = apply(new Element('div', classes: ['level']), mods);
+Element level({mods, left, content, right}) {
   final children = [];
   if (left != null) {
-    children.add(new Element('div',
-        classes: ['level-left'], content: _levelItems(left)));
+    children.add(div([clazz('level-left'), _levelItems(left)]));
   }
   if (content != null) {
     children.addAll(_levelItems(content));
   }
   if (right != null) {
-    children.add(new Element('div',
-        classes: ['level-right'], content: _levelItems(right)));
+    children.add(div([clazz('level-right', _levelItems(right))]));
   }
-  root.content = children;
-  return root;
+  return div([clazz('level'), mods, children]);
 }
 
-Element media({Mods mods, left, content, right}) {
-  return apply(
-      new Element(
-        'div',
-        classes: ['media'],
-        content: [
-          new Element('div', classes: ['media-left'], content: left),
-          new Element('div', classes: ['media-content'], content: content),
-          new Element('div', classes: ['media-right'], content: right),
-        ],
-      ),
-      mods);
+Element media({mods, left, content, right}) {
+  return div([
+    clazz('media'),
+    mods,
+    div([clazz('media-left'), left]),
+    div([clazz('media-content'), content]),
+    div([clazz('media-right'), right]),
+  ]);
 }
 
-Element hero({Mods mods, head, body, foot}) {
-  final root = apply(new Element('div', classes: ['hero']), mods);
+Element hero({mods, head, body, foot}) {
   final children = [];
   if (head != null) {
-    children.add(new Element('div', classes: ['hero-head'], content: head));
+    children.add(div([clazz('hero-head'), head]));
   }
   if (body != null) {
-    children.add(new Element('div', classes: ['hero-body'], content: body));
+    children.add(div([clazz('hero-body'), body]));
   }
   if (foot != null) {
-    children.add(new Element('div', classes: ['hero-foot'], content: foot));
+    children.add(div([clazz('hero-foot'), foot]));
   }
-  root.content = children;
-  return root;
+  return div([clazz('hero'), mods, children]);
 }
 
-Element section({Mods mods, content}) =>
-    apply(new Element('section', classes: ['section'], content: content), mods);
+Element section(content) =>
+    new Element('section', [clazz('section'), content]);
 
-Element footer({Mods mods, content}) =>
-    apply(new Element('footer', classes: ['footer'], content: content), mods);
+Element footer(content) => new Element('footer', [clazz('footer'), content]);
 
 // TODO: add Tiles

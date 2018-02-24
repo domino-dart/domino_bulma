@@ -1,21 +1,26 @@
 import 'package:domino/domino.dart';
-
-import '_modifiers.dart';
+import 'package:domino/helpers.dart';
 
 // https://bulma.io/documentation/form/general/
 
 enum InputType { text, password, email, tel }
+Map<InputType, Setter> _inputTypes = {
+  InputType.text: attr('type', 'text'),
+  InputType.password: attr('type', 'password'),
+  InputType.email: attr('type', 'email'),
+  InputType.tel: attr('type', 'tel'),
+};
 
 class FormField extends Component {
-  final Mods _mods;
+  final _mods;
   final String _label;
   final dynamic _input;
   final String _help;
 
-  String color;
+  Setter color;
 
   FormField({
-    Mods mods,
+    mods,
     String label,
     dynamic input,
     String help,
@@ -28,67 +33,48 @@ class FormField extends Component {
 
   @override
   Element build(BuildContext context) {
-    final elem = new Element(
-      'div',
-      classes: ['field'],
-      content: [
-        new Element('label', classes: ['label'], content: _label),
-        new Element('div', classes: ['control'], content: _input),
+    return div(
+      [
+        clazz('field'),
+        _mods,
+        new Element('label', [clazz('label'), _label]),
+        div([clazz('control'), _input]),
         _help == null
             ? null
             : new Element(
                 'p',
-                classes: ['help', color],
-                content: _help,
+                [clazz('help'), color, _help],
               ),
       ],
     );
-    apply(elem, _mods);
-    return elem;
   }
 }
 
 FormField _parentField(BuildContext context) {
-  return context.ancestors
+  return context.components
       .firstWhere((p) => p is FormField, orElse: () => null);
 }
 
 class Input extends Component {
-  final InputType _type;
-  final Mods _mods;
+  final Setter _type;
+  final _mods;
   var _element;
 
-  Input({InputType type, Mods mods})
-      : _type = type,
+  Input({InputType type, mods})
+      : _type = _inputTypes[type ?? InputType.text],
         _mods = mods;
 
   String get value => _element?.value;
 
   @override
   Element build(BuildContext context) {
-    final elem = new Element('input');
-    apply(elem, _mods);
-    if (_type != null) {
-      switch (_type) {
-        case InputType.text:
-          elem.attr('type', 'text');
-          break;
-        case InputType.password:
-          elem.attr('type', 'password');
-          break;
-        case InputType.email:
-          elem.attr('type', 'email');
-          break;
-        case InputType.tel:
-          elem.attr('type', 'tel');
-          break;
-      }
-    }
     final parent = _parentField(context);
-    if (parent != null) {
-      elem.addClass(parent.color);
-    }
-    elem.afterInsert(_setElement);
+    final elem = new Element('input', [
+      _type,
+      _mods,
+      parent?.color,
+      afterInsert(_setElement),
+    ]);
     return elem;
   }
 
