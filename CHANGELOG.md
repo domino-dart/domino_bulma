@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+**Breaking Changes**:
+
+- `FormField` and `Input` are no longer `Component`s, rather they became build methods.
+
 ## 0.3.0
 
 **Breaking Changes**:
