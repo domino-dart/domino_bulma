@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.2-dev
+## 0.3.2
 
 - Fix `clazz` methods.
 - Fix `input` class on `input()`.
