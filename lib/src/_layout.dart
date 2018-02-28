@@ -26,7 +26,7 @@ Element level({mods, left, content, right}) {
     children.addAll(_levelItems(content));
   }
   if (right != null) {
-    children.add(div([clazz('level-right', _levelItems(right))]));
+    children.add(div([clazz('level-right'), _levelItems(right)]));
   }
   return div([clazz('level'), mods, children]);
 }

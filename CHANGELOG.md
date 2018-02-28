@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.2-dev
+
+- Fix `clazz` methods.
+
 ## 0.3.1
 
 **Breaking Changes**:

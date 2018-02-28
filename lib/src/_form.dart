@@ -14,12 +14,8 @@ Element formField({
       clazz('field'),
       mods,
       new Element('label', [clazz('label'), label]),
-      div([clazz('control', input.append(color))]),
-      addIf(
-          help != null,
-          () => new Element('p', [
-                clazz('help', color, help),
-              ])),
+      div([clazz('control'), input.append(color)]),
+      addIf(help != null, () => new Element('p', [clazz('help'), color, help])),
     ]);
 
 Element input(String type, [mods]) =>

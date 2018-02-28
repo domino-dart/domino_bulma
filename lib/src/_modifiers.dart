@@ -34,7 +34,7 @@ class Modifier {
   static final Setter noShadow = clazz('is-shadowless');
 
   static final Setter unselectable = clazz('is-unselectable');
-  static final Setter invisble = clazz('is-invisible');
+  static final Setter invisible = clazz('is-invisible');
   static final Setter disabled = attr('disabled', 'disabled');
 
   static final Setter centered = clazz('is-centered');
