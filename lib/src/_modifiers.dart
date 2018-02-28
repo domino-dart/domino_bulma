@@ -41,4 +41,6 @@ class Modifier {
   static final Setter multiLine = clazz('is-multiline');
   static final Setter noGap = clazz('is-gapless');
   static final Setter fluid = clazz('is-fluid');
+  static final Setter hasAddons = clazz('has-addons');
+  static final Setter spaced = clazz('is-spaced');
 }

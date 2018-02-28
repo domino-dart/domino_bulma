@@ -1,6 +1,8 @@
 import 'package:domino/domino.dart';
 import 'package:domino/helpers.dart';
 
+import '_modifiers.dart';
+
 // https://bulma.io/documentation/elements/box/
 
 Element box(content) => div([clazz('box'), content]);
@@ -32,8 +34,50 @@ Element progress({mods, int value, int max, content}) {
   ]);
 }
 
+Element tag({mods, content}) =>
+    new Element('span', [clazz('tag'), mods, content]);
+
+Element tags({mods, content, bool hasAddons}) =>
+    div([clazz('tags'), addIf(hasAddons, Modifier.hasAddons), mods, content]);
+
+Element title({String tag, int level: 1, int size, bool spaced, String text}) =>
+    new Element(tag ?? 'h$level', [
+      clazz('title'),
+      addIf(size != null, clazz('is-$size')),
+      addIf(spaced, Modifier.spaced),
+      text,
+    ]);
+
+Element subtitle(
+        {String tag, int level: 2, int size, bool spaced, String text}) =>
+    new Element(tag ?? 'h$level', [
+      clazz('subtitle'),
+      addIf(size != null, clazz('is-$size')),
+      addIf(spaced, Modifier.spaced),
+      text,
+    ]);
+
+final _title = title;
+final _subtitle = subtitle;
+
+List<Element> titles(
+    {String tag, String title, String subtitle, int size, bool spaced}) {
+  return [
+    _title(
+      tag: tag,
+      size: size,
+      spaced: spaced,
+      text: title,
+    ),
+    _subtitle(
+      tag: tag,
+      size: size == null ? null : size + 2,
+      spaced: spaced,
+      text: subtitle,
+    ),
+  ];
+}
+
 // TODO: add icon
 // TODO: add image
 // TODO: add table
-// TODO: add tag
-// TODO: add title

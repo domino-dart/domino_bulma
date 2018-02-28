@@ -5,6 +5,7 @@
 - Fix `clazz` methods.
 - Fix `input` class on `input()`.
 - Implement form elements: `select`, `option`, `checkbox`, `radio`, `textarea`.
+- Implement elements: `tag`, `title`.
 
 ## 0.3.1
 
