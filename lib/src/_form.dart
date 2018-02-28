@@ -19,7 +19,7 @@ Element formField({
     ]);
 
 Element input(String type, [mods]) =>
-    new Element('input', [attr('type', type), mods]);
+    new Element('input', [clazz('input'), attr('type', type), mods]);
 
 // TODO: add icons FormField
 // TODO: add Textarea

@@ -3,6 +3,7 @@
 ## 0.3.2-dev
 
 - Fix `clazz` methods.
+- Fix `input` class on `input()`.
 
 ## 0.3.1
 
