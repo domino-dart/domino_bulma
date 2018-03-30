@@ -68,7 +68,35 @@ Element message({mods, String title, EventHandler onDelete, content}) {
 // TODO: add Menu
 // TODO: add Modal
 // TODO: add Navbar
-// TODO: add Pagination
+
+Element pagination({mods, previous, next, List items}) {
+  return new Element('nav', [
+    clazz('pagination'),
+    attr('role', 'navigation'),
+    attr('aria-label', 'navigation'),
+    mods,
+    previous == null
+        ? null
+        : new Element('a', [clazz('pagination-previous'), previous]),
+    next == null ? null : new Element('a', [clazz('pagination-next'), next]),
+    new Element('ul', [
+      clazz('pagination-list'),
+      items.map((item) {
+        if (item is String && item == '...') {
+          return new Element('li', [
+            // TODO: use &hellip;
+            new Element('span', [clazz('pagination-ellipsis'), '...']),
+          ]);
+        } else {
+          return new Element('li', [
+            new Element('a', [clazz('pagination-link'), item]),
+          ]);
+        }
+      }).toList(),
+    ]),
+  ]);
+}
+
 // TODO: add Panel
 
 Element tabs({mods, List items}) {

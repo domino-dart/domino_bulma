@@ -2,7 +2,7 @@
 
 ## 0.3.3-dev
 
-- Implement component: `tabs`.
+- Implement component: `pagination`, `tabs`.
 
 ## 0.3.2
 
