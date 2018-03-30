@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.3-dev
+
+- Implement component: `tabs`.
+
 ## 0.3.2
 
 - Fix `clazz` methods.

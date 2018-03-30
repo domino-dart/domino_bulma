@@ -70,4 +70,12 @@ Element message({mods, String title, EventHandler onDelete, content}) {
 // TODO: add Navbar
 // TODO: add Pagination
 // TODO: add Panel
-// TODO: add Tabs
+
+Element tabs({mods, List items}) {
+  return new Element('div', [
+    mods,
+    new Element('ul', [
+      items.map((item) => new Element('li', [item])).toList(),
+    ]),
+  ]);
+}

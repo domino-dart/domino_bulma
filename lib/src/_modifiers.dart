@@ -32,15 +32,21 @@ class Modifier {
   static final Setter noPadding = clazz('is-paddingless');
   static final Setter noRadius = clazz('is-radiusless');
   static final Setter noShadow = clazz('is-shadowless');
+  static final Setter boxed = clazz('is-boxed');
+  static final Setter toggle = clazz('is-toggle');
+  static final Setter toggleRounded = clazz('is-toggle-rounded');
 
   static final Setter unselectable = clazz('is-unselectable');
   static final Setter invisible = clazz('is-invisible');
   static final Setter disabled = attr('disabled', 'disabled');
 
+  static final Setter active = clazz('is-active');
   static final Setter centered = clazz('is-centered');
+  static final Setter right = clazz('is-right');
   static final Setter multiLine = clazz('is-multiline');
   static final Setter noGap = clazz('is-gapless');
   static final Setter fluid = clazz('is-fluid');
   static final Setter hasAddons = clazz('has-addons');
   static final Setter spaced = clazz('is-spaced');
+  static final Setter fullwidth = clazz('is-fullwidth');
 }
