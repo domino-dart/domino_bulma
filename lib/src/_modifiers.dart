@@ -13,8 +13,30 @@ class Modifier {
   static final Setter warning = clazz('is-warning');
   static final Setter danger = clazz('is-danger');
 
+  static final Setter textPrimary = clazz('has-text-primary');
+  static final Setter textLink = clazz('has-text-link');
+  static final Setter textInfo = clazz('has-text-info');
+  static final Setter textSuccess = clazz('has-text-success');
+  static final Setter textWarning = clazz('has-text-warning');
+  static final Setter textDanger = clazz('has-text-danger');
+
   static final Setter light = clazz('is-light');
   static final Setter dark = clazz('is-dark');
+
+  static final Setter textLight = clazz('has-text-light');
+  static final Setter textDark = clazz('has-text-dark');
+  static final Setter textBlack = clazz('has-text-black');
+  static final Setter textWhite = clazz('has-text-white');
+  static final Setter textGrey1 = clazz('has-text-black-bis');
+  static final Setter textGrey2 = clazz('has-text-black-ter');
+  static final Setter textGrey3 = clazz('has-text-grey-darker');
+  static final Setter textGrey4 = clazz('has-text-grey-dark');
+  static final Setter textGrey5 = clazz('has-text-grey');
+  static final Setter textGrey = textGrey5;
+  static final Setter textGrey6 = clazz('has-text-grey-light');
+  static final Setter textGrey7 = clazz('has-text-grey-lighter');
+  static final Setter textGrey8 = clazz('has-text-white-ter');
+  static final Setter textGrey9 = clazz('has-text-white-bis');
 
   static final Setter small = clazz('is-small');
   static final Setter medium = clazz('is-medium');
