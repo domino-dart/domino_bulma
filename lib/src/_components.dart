@@ -2,6 +2,7 @@ import 'package:domino/domino.dart';
 import 'package:domino/helpers.dart' show div;
 
 import '_elements.dart';
+import '_modifiers.dart';
 
 // https://bulma.io/documentation/components/breadcrumb/
 
@@ -66,7 +67,32 @@ Element message({mods, String title, EventHandler onDelete, content}) {
 
 // TODO: add Dropdown
 // TODO: add Menu
-// TODO: add Modal
+
+Element modal({header, content, footer, close, bool isActive: false}) {
+  final isCard = header != null || footer != null;
+  final renderClose = close != null || !isCard;
+  return new Element('div', [
+    clazz('modal'),
+    isActive ? Modifier.active : null,
+    new Element('div', clazz('modal-background')),
+    isCard
+        ? new Element('div', [
+            clazz('modal-card'),
+            new Element('header', [clazz('modal-card-head'), header]),
+            new Element('section', [clazz('modal-card-body'), content]),
+            new Element('footer', [clazz('modal-card-foot'), footer]),
+          ])
+        : new Element('div', [
+            clazz('modal-content'),
+            content,
+          ]),
+    renderClose
+        ? new Element('button',
+            [clazz('modal-close'), attr('aria-label', 'close'), close])
+        : null,
+  ]);
+}
+
 // TODO: add Navbar
 
 Element pagination({mods, previous, next, List items}) {
