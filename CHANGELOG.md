@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.3-dev
+## 0.3.3
 
 - Implement component: `modal`, `pagination`, `tabs`.
 - Implement element: `image`.
