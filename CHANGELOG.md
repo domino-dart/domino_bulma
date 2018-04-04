@@ -3,7 +3,8 @@
 ## 0.3.3-dev
 
 - Implement component: `modal`, `pagination`, `tabs`.
-- Text color modifiers.
+- Implement element: `image`.
+- Text color and image dimension modifiers.
 
 ## 0.3.2
 

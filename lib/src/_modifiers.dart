@@ -71,4 +71,19 @@ class Modifier {
   static final Setter hasAddons = clazz('has-addons');
   static final Setter spaced = clazz('is-spaced');
   static final Setter fullwidth = clazz('is-fullwidth');
+
+  static final Setter dim16x16 = clazz('is-16x16');
+  static final Setter dim24x24 = clazz('is-24x24');
+  static final Setter dim32x32 = clazz('is-32x32');
+  static final Setter dim48x48 = clazz('is-48x48');
+  static final Setter dim64x64 = clazz('is-64x64');
+  static final Setter dim96x96 = clazz('is-96x96');
+  static final Setter dim128x128 = clazz('is-128x128');
+  static final Setter square = clazz('is-square');
+  static final Setter dimSquare = square;
+  static final Setter dim1by1 = clazz('is-1by1');
+  static final Setter dim4by3 = clazz('is-4by3');
+  static final Setter dim3by2 = clazz('is-3by2');
+  static final Setter dim16by9 = clazz('is-16by9');
+  static final Setter dim2by1 = clazz('is-2by1');
 }

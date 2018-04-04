@@ -78,6 +78,13 @@ List<Element> titles(
   ];
 }
 
+Element image({mods, String url}) {
+  return new Element('figure', [
+    clazz('image'),
+    mods,
+    new Element('img', [attr('src', url)]),
+  ]);
+}
+
 // TODO: add icon
-// TODO: add image
 // TODO: add table
