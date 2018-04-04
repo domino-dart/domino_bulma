@@ -110,8 +110,8 @@ Element pagination({mods, previous, next, List items}) {
       items.map((item) {
         if (item is String && item == '...') {
           return new Element('li', [
-            // TODO: use &hellip;
-            new Element('span', [clazz('pagination-ellipsis'), '...']),
+            new Element(
+                'span', [clazz('pagination-ellipsis'), innerHtml('&hellip;')]),
           ]);
         } else {
           return new Element('li', [

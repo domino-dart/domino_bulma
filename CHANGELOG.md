@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.4-dev
+
+- Support `&hellip;` inside pagination.
+
 ## 0.3.3
 
 - Implement component: `modal`, `pagination`, `tabs`.
