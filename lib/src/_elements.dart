@@ -7,15 +7,15 @@ import '_modifiers.dart';
 
 Element box(content) => div([clazz('box'), content]);
 
-Element button(content, {EventHandler onClick}) =>
+Element button(content, {Function onClick}) =>
     new Element('button', [clazz('button'), on('click', onClick), content]);
 
 Element content(content) => new Element('content', content);
 
-Element delete({mods, EventHandler onClick}) =>
+Element delete({mods, Function onClick}) =>
     new Element('button', [clazz('delete'), on('click', onClick), mods]);
 
-Element notification(content, {EventHandler onDelete}) => div([
+Element notification(content, {Function onDelete}) => div([
       clazz('notification'),
       delete(onClick: onDelete),
       content,

@@ -49,7 +49,7 @@ Element card({mods, String title, content}) {
   return div([clazz('card'), mods, children]);
 }
 
-Element message({mods, String title, EventHandler onDelete, content}) {
+Element message({mods, String title, Function onDelete, content}) {
   final children = [];
   if (title != null || onDelete != null) {
     children.add(div([

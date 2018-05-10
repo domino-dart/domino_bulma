@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+
+- Upgrade to `domino` `0.4.0`
+
 ## 0.3.4-dev
 
 - Support `&hellip;` inside pagination.
