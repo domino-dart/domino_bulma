@@ -14,7 +14,7 @@ Element container(content, {bool fluid}) => div([
     ]);
 
 Iterable _iterate(items) => items is List ? items : [items];
-_levelItems(items) =>
+List _levelItems(items) =>
     _iterate(items).map((item) => div([clazz('level-item'), item])).toList();
 
 Element level({mods, left, content, right}) {
