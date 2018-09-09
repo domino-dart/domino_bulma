@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.4.1-dev
+## 0.4.2
 
-- Enabled Dart2 Preview for analysis.
+- Enabled Dart2.
 
 ## 0.4.0
 
