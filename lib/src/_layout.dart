@@ -55,9 +55,8 @@ Element hero({mods, head, body, foot}) {
   return div([clazz('hero'), mods, children]);
 }
 
-Element section(content) =>
-    new Element('section', [clazz('section'), content]);
+Element section(content) => Element('section', [clazz('section'), content]);
 
-Element footer(content) => new Element('footer', [clazz('footer'), content]);
+Element footer(content) => Element('footer', [clazz('footer'), content]);
 
 // TODO: add Tiles

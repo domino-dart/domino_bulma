@@ -15,30 +15,29 @@ Element formField({
     div([
       clazz('field'),
       mods,
-      new Element('label', [clazz('label'), label]),
+      Element('label', [clazz('label'), label]),
       div([clazz('control'), input.append(color)]),
-      addIf(help != null, () => new Element('p', [clazz('help'), color, help])),
+      addIf(help != null, () => Element('p', [clazz('help'), color, help])),
     ]);
 
 Element input(String type, [mods]) =>
-    new Element('input', [clazz('input'), attr('type', type), mods]);
+    Element('input', [clazz('input'), attr('type', type), mods]);
 
 Element select({mods, options}) =>
-    div([clazz('select'), mods, new Element('select', options)]);
+    div([clazz('select'), mods, Element('select', options)]);
 
-Element option({String value, bool selected, content}) =>
-    new Element('option', [
+Element option({String value, bool selected, content}) => Element('option', [
       attr('value', value),
       addIf(selected, () => attr('selected', 'selected')),
       content,
     ]);
 
-Element checkbox({label, mods, Symbol symbol, bool disabled}) => new Element(
+Element checkbox({label, mods, Symbol symbol, bool disabled}) => Element(
       'label',
       [
         clazz('checkbox'),
         addIf(disabled, Modifier.disabled),
-        new Element('input', [
+        Element('input', [
           attr('type', 'checkbox'),
           addIf(disabled, Modifier.disabled),
           mods,
@@ -49,12 +48,12 @@ Element checkbox({label, mods, Symbol symbol, bool disabled}) => new Element(
     );
 
 Element radio({String name, label, mods, Symbol symbol, bool disabled}) =>
-    new Element(
+    Element(
       'label',
       [
         clazz('radio'),
         addIf(disabled, Modifier.disabled),
-        new Element('input', [
+        Element('input', [
           attr('type', 'radio'),
           attr('name', name),
           mods,
@@ -66,7 +65,7 @@ Element radio({String name, label, mods, Symbol symbol, bool disabled}) =>
     );
 
 Element textarea([content]) =>
-    new Element('textarea', [clazz('textarea'), content]);
+    Element('textarea', [clazz('textarea'), content]);
 
 // TODO: add icons FormField
 // TODO: add File

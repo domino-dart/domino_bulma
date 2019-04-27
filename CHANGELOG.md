@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.4
+
+- Extra lints and Dart 2.2 code. 
+
 ## 0.4.2
 
 - Enabled Dart2.
