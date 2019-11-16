@@ -15,9 +15,18 @@ Element formField({
     div([
       clazz('field'),
       mods,
-      Element('label', [clazz('label'), label]),
-      div([clazz('control'), input.append(color)]),
-      addIf(help != null, () => Element('p', [clazz('help'), color, help])),
+      div([
+        clazz('field-label', 'is-normal'),
+        Element('label', [clazz('label'), label]),
+      ]),
+      div([
+        clazz('field-body'),
+        div([
+          clazz('field'),
+          Element('p', [clazz('control'), input.append(color)]),
+        ]),
+      ]),
+      if (help != null) () => Element('p', [clazz('help'), color, help]),
     ]);
 
 Element input(String type, [mods]) =>
@@ -28,7 +37,7 @@ Element select({mods, options}) =>
 
 Element option({String value, bool selected, content}) => Element('option', [
       attr('value', value),
-      addIf(selected, () => attr('selected', 'selected')),
+      if (selected ?? false) () => attr('selected', 'selected'),
       content,
     ]);
 
@@ -36,10 +45,10 @@ Element checkbox({label, mods, Symbol symbol, bool disabled}) => Element(
       'label',
       [
         clazz('checkbox'),
-        addIf(disabled, Modifier.disabled),
+        if (disabled ?? false) Modifier.disabled,
         Element('input', [
           attr('type', 'checkbox'),
-          addIf(disabled, Modifier.disabled),
+          if (disabled ?? false) Modifier.disabled,
           mods,
           symbol,
         ]),
@@ -52,13 +61,13 @@ Element radio({String name, label, mods, Symbol symbol, bool disabled}) =>
       'label',
       [
         clazz('radio'),
-        addIf(disabled, Modifier.disabled),
+        if (disabled ?? false) Modifier.disabled,
         Element('input', [
           attr('type', 'radio'),
           attr('name', name),
           mods,
           symbol,
-          addIf(disabled, Modifier.disabled),
+          if (disabled ?? false) Modifier.disabled,
         ]),
         label,
       ],

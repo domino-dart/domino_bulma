@@ -71,6 +71,12 @@ class Modifier {
   static final Setter hasAddons = clazz('has-addons');
   static final Setter spaced = clazz('is-spaced');
   static final Setter fullwidth = clazz('is-fullwidth');
+  static final Setter hoverable = clazz('is-hoverable');
+
+  static final Setter textCentered = clazz('has-text-centered');
+  static final Setter textJustified = clazz('has-text-justified');
+  static final Setter textLeft = clazz('has-text-left');
+  static final Setter textRight = clazz('has-text-right');
 
   static final Setter dim16x16 = clazz('is-16x16');
   static final Setter dim24x24 = clazz('is-24x24');

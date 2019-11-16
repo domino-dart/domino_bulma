@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.0
+
+- Support component: `dropdown`.
+- Depending on `domino 0.5`.
+
 ## 0.4.4
 
 - Extra lints and Dart 2.2 code. 

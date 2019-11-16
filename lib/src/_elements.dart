@@ -22,29 +22,29 @@ Element notification(content, {Function onDelete}) => div([
     ]);
 
 Element progress({mods, int value, int max, content}) {
-  if (content != null) {
+  if (content != null && value != null) {
     content = '${(value * 100 / max).round()}%';
   }
   return Element('progress', [
     clazz('progress'),
-    attr('value', '$value'),
-    attr('max', '$max'),
     mods,
+    attr('value', value?.toString()),
+    attr('max', '$max'),
     content,
   ]);
 }
 
 Element tag({mods, content}) => Element('span', [clazz('tag'), mods, content]);
 
-Element tags({mods, content, bool hasAddons}) =>
-    div([clazz('tags'), addIf(hasAddons, Modifier.hasAddons), mods, content]);
+Element tags({mods, content, bool hasAddons}) => div(
+    [clazz('tags'), if (hasAddons ?? false) Modifier.hasAddons, mods, content]);
 
 Element title(
         {String tag, int level = 1, int size, bool spaced, String text}) =>
     Element(tag ?? 'h$level', [
       clazz('title'),
-      addIf(size != null, clazz('is-$size')),
-      addIf(spaced, Modifier.spaced),
+      if (size != null) clazz('is-$size'),
+      if (spaced ?? false) Modifier.spaced,
       text,
     ]);
 
@@ -52,8 +52,8 @@ Element subtitle(
         {String tag, int level = 2, int size, bool spaced, String text}) =>
     Element(tag ?? 'h$level', [
       clazz('subtitle'),
-      addIf(size != null, clazz('is-$size')),
-      addIf(spaced, Modifier.spaced),
+      if (size != null) clazz('is-$size'),
+      if (spaced ?? false) Modifier.spaced,
       text,
     ]);
 
@@ -86,5 +86,20 @@ Element image({mods, String url}) {
   ]);
 }
 
-// TODO: add icon
-// TODO: add table
+Element icon(content, {mods}) {
+  return Element('span', [clazz('icon'), mods, content]);
+}
+
+Element table({thead, tfoot, tbody, mods}) {
+  return Element('table', [
+    clazz('table'),
+    mods,
+    if (thead != null) Element('thead', thead),
+    if (tbody != null) Element('tbody', tbody),
+    if (tfoot != null) Element('tfoot', tfoot),
+  ]);
+}
+
+Element tr(content) => Element('tr', content);
+Element th(content) => Element('th', content);
+Element td(content) => Element('td', content);
